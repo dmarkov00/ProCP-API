@@ -11,6 +11,17 @@
 |
 */
 
+
+Route::group(['prefix'=>'api', 'middleware'=>'auth:api'], function () {
+    Route::get('/api_test', 'ApiLoginController@api');
+});
+
+Route::get('/view_token', 'ApiLoginController@showToken');
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
