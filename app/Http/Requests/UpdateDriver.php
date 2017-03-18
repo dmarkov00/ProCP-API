@@ -13,7 +13,7 @@ class UpdateDriver extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,9 +23,17 @@ class UpdateDriver extends FormRequest
      */
     public function rules()
     {
+
+        // TODO: Research how to access user id in the method below so to have better validation
+//        return [
+//
+//            'email' => [
+//                'email',
+//                Rule::unique('drivers')->ignore($user->id)]
+//        ];
         return [
 
-            'email' => 'email|unique:drivers,email'
+            'email' => 'required|email|unique:drivers,email'
         ];
     }
 }

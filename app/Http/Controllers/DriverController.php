@@ -20,12 +20,13 @@ class DriverController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  App\Requests\StoreDriver $request
      * @return \Illuminate\Http\Response
      */
     public function store(Requests\StoreDriver $request)
     {
-//        $driver = Driver:crea
+        // TODO reseach why it doesnt work
+//        $driver = Driver:create($request()->all())
 
         $driver = new Driver;
         $driver->fName = $request->fName;
@@ -44,7 +45,6 @@ class DriverController extends Controller
      */
     public function show(Driver $driver)
     {
-
         return response()->json($driver);
     }
 
