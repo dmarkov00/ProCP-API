@@ -14,10 +14,7 @@ class DriverController extends Controller
      */
     public function index()
     {
-        $drivers = Driver::all();
-
-        // Method will automatically set the Content-Type header to application/json, as well as convert the given array to JSON
-        return response()->json($drivers);
+        return Driver::all();
     }
 
     /**
@@ -30,12 +27,12 @@ class DriverController extends Controller
     {
 
         $driver = new Driver;
-
         $driver->fName = $request->fName;
         $driver->lName = $request->lName;
         $driver->phoneNbr = $request->phoneNbr;
         $driver->email = $request->email;
         $driver->save();
+//       return response($driver, 201);
     }
 
     /**
@@ -46,18 +43,8 @@ class DriverController extends Controller
      */
     public function show(Driver $driver)
     {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Driver  $driver
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Driver $driver)
-    {
-        //
+       return response()->json($driver);
     }
 
     /**
@@ -69,7 +56,12 @@ class DriverController extends Controller
      */
     public function update(Request $request, Driver $driver)
     {
-        //
+
+        $driver->fName = $request->fName ;
+        $driver->lName = $request->lName;
+        $driver->phoneNbr = $request->phoneNbr;
+        $driver->email = $request->email;
+        $driver->save();
     }
 
     /**
@@ -80,6 +72,6 @@ class DriverController extends Controller
      */
     public function destroy(Driver $driver)
     {
-        //
+        $driver->delete();
     }
 }
