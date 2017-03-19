@@ -25,16 +25,7 @@ class DriverController extends Controller
      */
     public function store(Requests\StoreDriver $request)
     {
-        // TODO reseach why it doesnt work
-//        $driver = Driver:create($request()->all())
-
-        $driver = new Driver;
-        $driver->fName = $request->fName;
-        $driver->lName = $request->lName;
-        $driver->phoneNbr = $request->phoneNbr;
-        $driver->email = $request->email;
-        $driver->save();
-//       return response($driver, 201);
+          return Driver::create($request->all());
     }
 
     /**
