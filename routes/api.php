@@ -18,3 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::resource('drivers', 'DriverController', ['except' => ['edit', 'create']]);
 
+//Auth::routes(['except' => ['showResetForm', 'showRegistrationForm']]);
+
+Route::post('login','Auth\LoginController@login');
+
+Route::post('register','Auth\RegisterController@register');
+
+
