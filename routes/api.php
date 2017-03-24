@@ -17,7 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('drivers', 'DriverController', ['except' => ['edit', 'create']]);
+//It is only possible to see the drivers.
+Route::resource('drivers', 'DriverController', ['except' => ['update', 'store']]);
 
 //Auth::routes(['except' => ['showResetForm', 'showRegistrationForm']]);
 

@@ -54,7 +54,6 @@ class DriverController extends Controller
     public function update(Requests\UpdateDriver $request, Driver $driver)
     {
         $driver->fill($request->all());
-
         $driver->save();
     }
 
