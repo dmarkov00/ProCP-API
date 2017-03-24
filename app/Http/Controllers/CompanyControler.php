@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCompany;
 use Illuminate\Http\Request;
+use App\Company;
 
 class CompanyControler extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('custom');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,17 +19,7 @@ class CompanyControler extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Company::all();
     }
 
     /**
@@ -32,9 +28,9 @@ class CompanyControler extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCompany $request)
     {
-        //
+        return Company::create($request->all());
     }
 
     /**
@@ -43,20 +39,9 @@ class CompanyControler extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Company $company)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json($company);
     }
 
     /**
@@ -66,9 +51,10 @@ class CompanyControler extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateCompany $request, Company $company)
     {
-        //
+        $company->fill($request->all());
+        $company->save();
     }
 
     /**
@@ -77,8 +63,8 @@ class CompanyControler extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Company $company)
     {
-        //
+        $company->delete();
     }
 }

@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //It is only possible to see the drivers.
 Route::resource('drivers', 'DriverController', ['except' => ['update', 'store']]);
 
+Route::resource('companies', 'CompanyControler');
+
 //Auth::routes(['except' => ['showResetForm', 'showRegistrationForm']]);
 
 Route::post('login','Auth\LoginController@login');
