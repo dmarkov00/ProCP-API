@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateCompany;
 use Illuminate\Http\Request;
 use App\Company;
+use App\Truck;
 
 class CompanyControler extends Controller
 {
@@ -66,5 +67,20 @@ class CompanyControler extends Controller
     public function destroy(Company $company)
     {
         $company->delete();
+    }
+
+    public function showCompanyTrucks($id)
+    {
+        $trucks=Truck::where('id', $id)->get();
+        return response()->json($trucks);
+    }
+
+    public function assignTruck(Request $request, $id)
+    {
+        $company=Company::findOrFail($id);
+        $truck=Truck::findOrFail($request->truck_id);
+        $truck->company_id=$company->id;
+        $truck->save();
+        return response()->json("success");
     }
 }

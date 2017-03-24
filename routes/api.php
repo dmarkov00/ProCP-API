@@ -22,6 +22,9 @@ Route::resource('drivers', 'DriverController', ['except' => ['update', 'store']]
 
 Route::resource('companies', 'CompanyControler');
 
+Route::middleware('custom')->get('/company_trucks/{id}','CompanyControler@showCompanyTrucks');
+Route::middleware('custom')->post('/companies/{id}/assignTruck','CompanyControler@assignTruck');
+
 //Auth::routes(['except' => ['showResetForm', 'showRegistrationForm']]);
 
 Route::post('login','Auth\LoginController@login');
