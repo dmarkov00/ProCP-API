@@ -18,6 +18,7 @@ class Companies extends Migration
             $table->increments('id');
             $table->string('address')->unique();
             $table->string('companyName')->unique();
+            $table->timestamps();
         });
     }
 

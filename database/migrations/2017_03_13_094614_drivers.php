@@ -17,15 +17,18 @@ class Drivers extends Migration
             $table->increments('id');
             $table->string('licensePlate')->unique();
             $table->integer('driver_id')->unsigned()->nullable();
+            $table->integer('company_id')->unsigned()->nullable();
             $table->integer('location_id')->unsigned()->nullable();
-            $table->double('avgFuelComsumption');
-            $table->double('payLoadCapacity');
+            $table->double('avgFuelComsumption')->nullable();
+            $table->double('payLoadCapacity')->nullable();
             $table->double('weight');
             $table->double('height');
             $table->double('width');
             $table->double('length');
+            $table->timestamps();
             $table->foreign('driver_id')->references('id')->on('drivers');
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('location_id')->references('id')->on('locations');
         });
     }
 

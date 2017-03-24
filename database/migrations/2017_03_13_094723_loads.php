@@ -15,17 +15,22 @@ class Loads extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('startLocation_id')->unsigned();
-            $table->integer('endLocation_id')->unsigned();
-            $table->string('content');
-            $table->double('weight');
-            $table->date('deadline');
-            $table->double('salary');
-            $table->integer('client_id')->unsigned();
+            $table->integer('est_time_driving');
+            $table->integer('est_distance');
+            $table->double('est_fuelConsumption');
+            $table->double('est_cost');
+            $table->integer('act_time_driving');
+            $table->integer('act_distance');
+            $table->double('act_fuelConsumption');
+            $table->double('act_cost');
+            $table->double('sum_salaries');
+            $table->double('revenue');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
             $table->integer('truck_id')->unsigned()->unique();
-            $table->foreign('startLocation_id')->references('id')->on('locations');
-            $table->foreign('endLocation_id')->references('id')->on('locations');
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->integer('company_id')->unsigned()->unique();
+            $table->foreign('truck_id')->references('id')->on('trucks');
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 
