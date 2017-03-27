@@ -18,6 +18,7 @@ class Drivers extends Migration
             $table->string('fName');
             $table->string('lName');
             $table->integer('phoneNbr');
+            $table->boolean('taken');
             $table->string('email');
         });
 
