@@ -12,15 +12,19 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// tfa nz ko prai :D
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 //It is only possible to see the drivers.
 Route::resource('drivers', 'DriverController', ['except' => ['update', 'store']]);
 
 Route::resource('companies', 'CompanyController',['except' => ['update', 'store']]);
+
+Route::resource('clients', 'ClientController',['except' => ['update', 'store']]);
+
+
 
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');
 Route::middleware('custom')->post('/companies/{id}/assignTruck','CompanyController@assignTruck');
