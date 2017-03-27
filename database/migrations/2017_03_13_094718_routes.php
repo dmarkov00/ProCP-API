@@ -15,12 +15,12 @@ class Routes extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('companyName');
-            $table->string('fname');
-            $table->string('lname');
+            $table->string('companyName')->nullable(); // because can be an individual without company
+            $table->string('fName');
+            $table->string('lName');
             $table->string('phone');
             $table->string('email');
-            $table->string('address');
+            $table->string('address')->nullable();
         });
     }
 

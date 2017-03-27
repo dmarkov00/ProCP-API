@@ -18,11 +18,11 @@ use Illuminate\Http\Request;
 //});
 
 //It is only possible to see the drivers.
-Route::resource('drivers', 'DriverController', ['except' => ['update', 'store']]);
+Route::resource('drivers', 'DriverController', ['except' => ['edit', 'create']]);
 
-Route::resource('companies', 'CompanyController',['except' => ['update', 'store']]);
+Route::resource('companies', 'CompanyController',['except' => ['edit', 'create']]);
 
-Route::resource('clients', 'ClientController',['except' => ['update', 'store']]);
+Route::resource('clients', 'ClientController',['except' => ['edit', 'create']]);
 
 
 
