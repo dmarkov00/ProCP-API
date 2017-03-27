@@ -8,6 +8,11 @@ use App\Http\Requests\StoreClient;
 
 class ClientController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('custom');
+    }
     /**
      * Display a listing of the resource.
      *
