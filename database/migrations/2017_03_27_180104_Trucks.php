@@ -25,8 +25,8 @@ class Trucks extends Migration
             $table->double('height');
             $table->double('width');
             $table->double('length');
-            $table->boolean('taken');
-            $table->boolean('broken');
+            $table->boolean('taken')->default(false);
+            $table->boolean('broken')->default(false);
             $table->timestamps();
             //$table->foreign('driver_id')->references('id')->on('drivers');
             $table->foreign('company_id')->references('id')->on('companies');
