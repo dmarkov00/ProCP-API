@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Truck;
 
-class CompanyControler extends Controller
+class CompanyController extends Controller
 {
     public function __construct()
     {
