@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Load;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreLoad;
 
 class LoadController extends Controller
 {
@@ -14,72 +15,52 @@ class LoadController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Load::all();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreLoad $request)
     {
-        //
+        return Load::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Load  $load
+     * @param  \App\Load $load
      * @return \Illuminate\Http\Response
      */
     public function show(Load $load)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Load  $load
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Load $load)
-    {
-        //
+        return response()->json($load);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Load  $load
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Load $load
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Load $load)
     {
-        //
+        $load->fill($request->all());
+        $load->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Load  $load
+     * @param  \App\Load $load
      * @return \Illuminate\Http\Response
      */
     public function destroy(Load $load)
     {
-        //
+        $load->delete();
     }
 }

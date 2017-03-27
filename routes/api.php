@@ -24,6 +24,9 @@ Route::resource('companies', 'CompanyController',['except' => ['edit', 'create']
 
 Route::resource('clients', 'ClientController',['except' => ['edit', 'create']]);
 
+Route::resource('loads', 'LoadController',['except' => ['edit', 'create']]);
+
+
 
 
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');
