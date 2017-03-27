@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDriver extends FormRequest
+class LoginUser extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateDriver extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,17 +23,9 @@ class UpdateDriver extends FormRequest
      */
     public function rules()
     {
-
-        // TODO: Research how to retrieve the current email of a the driver that is being updated
-//        return [
-//
-//            'email' => [
-//                'email',
-//                Rule::unique('drivers')->ignore($user->id)]
-//        ];
         return [
-
-            'email' => 'required|email|unique:drivers,email'
+            'email' => 'required|email',
+            'password' => 'required',
         ];
     }
 }
