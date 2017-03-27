@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class StoreClient extends FormRequest
 {
@@ -23,11 +24,22 @@ class StoreClient extends FormRequest
      */
     public function rules()
     {
-        return [
-            'fName' => 'required',
-            'lName' => 'required',
-            'phone' => 'required',
-            'email' => 'required|email|unique:clients',
-        ];
+        if ($this->isMethod('post')) {
+            return [
+                'fName' => 'required',
+                'lName' => 'required',
+                'phone' => 'required',
+                'email' => 'required|email|unique:clients',
+            ];
+        } elseif ($this->isMethod('put')) {
+//            return [
+//
+//                'email' => [Rule::unique('clients')->ignore($this->email, 'email' )];
+//            ];
+//            return [
+//
+//                'email' => 'required|email|unique:drivers,email'
+//            ];
+        }
     }
 }

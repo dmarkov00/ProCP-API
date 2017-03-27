@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\StoreDriver;
 use App\Driver;
 
 class DriverController extends Controller
@@ -28,7 +28,7 @@ class DriverController extends Controller
      * @param  App\Requests\StoreDriver $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\StoreDriver $request)
+    public function store(StoreDriver $request)
     {
           return Driver::create($request->all());
     }
@@ -51,7 +51,7 @@ class DriverController extends Controller
      * @param  \App\Driver $driver
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\UpdateDriver $request, Driver $driver)
+    public function update(StoreDriver $request, Driver $driver)
     {
         $driver->fill($request->all());
         $driver->save();
