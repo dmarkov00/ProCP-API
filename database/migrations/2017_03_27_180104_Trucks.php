@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Drivers extends Migration
+class Trucks extends Migration
 {
     /**
      * Run the migrations.
@@ -26,7 +26,7 @@ class Drivers extends Migration
             $table->double('width');
             $table->double('length');
             $table->timestamps();
-            $table->foreign('driver_id')->references('id')->on('drivers');
+            //$table->foreign('driver_id')->references('id')->on('drivers');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('location_id')->references('id')->on('locations');
         });

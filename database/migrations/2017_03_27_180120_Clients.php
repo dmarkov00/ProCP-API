@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Trucks extends Migration
+class Clients extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class Trucks extends Migration
      */
     public function up()
     {
-        Schema::create('drivers', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fName');
-            $table->string('lName');
-            $table->integer('phoneNbr');
+            $table->string('companyName');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('phone');
             $table->string('email');
+            $table->string('address');
         });
-
     }
 
     /**
@@ -30,6 +31,6 @@ class Trucks extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drivers');
+        Schema::dropIfExists('clients');
     }
 }

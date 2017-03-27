@@ -23,6 +23,6 @@ class CustomAuth
                 return $next($request);
             }
         }
-        abort(403, 'Unauthorized action.');
+        return response()->json(['status' => 403, 'message' => 'Unauthorized action.']);
     }
 }
