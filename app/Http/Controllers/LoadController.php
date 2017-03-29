@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Load;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLoad;
@@ -63,4 +64,9 @@ class LoadController extends Controller
     {
         $load->delete();
     }
+    public function  assignClient(Load $load, Client $client){
+//        $load
+
+    }
+
 }

@@ -9,4 +9,9 @@ class Load extends Model
     public $timestamps = false;
     // Making all attributes mass assignable
     protected $guarded = [];
+
+    public function client()
+    {
+        return $this->hasOne('Client');
+    }
 }
