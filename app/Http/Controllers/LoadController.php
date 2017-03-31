@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Load;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLoad;
 
 class LoadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('custom');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -49,6 +54,15 @@ class LoadController extends Controller
      */
     public function update(Request $request, Load $load)
     {
+        if($request->has('client_name')&&$request->has('client_name')&&$request->has('client_name')){
+
+        }
+        else{
+            return response()->json(array(
+                'code'      =>  401,
+                'message'   =>  "please fill in all the data"
+            ), 401);
+        }
         $load->fill($request->all());
         $load->save();
     }
