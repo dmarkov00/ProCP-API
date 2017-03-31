@@ -23,7 +23,7 @@ class Loads extends Migration
             $table->boolean('delivered')->default(false);
             $table->double('salary');
             $table->integer('client_id')->unsigned();
-            $table->integer('truck_id')->unsigned()->unique();
+            $table->integer('truck_id')->unsigned()->nullable();
             $table->foreign('startLocation_id')->references('id')->on('locations')->onDelete('cascade');
             $table->foreign('endLocation_id')->references('id')->on('locations')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');

@@ -15,12 +15,12 @@ class Clients extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('companyName')->nullable(); // because can be an individual without company
-            $table->string('fName');
-            $table->string('lName');
+            $table->integer('company_id')->unsigned(); // because can be an individual without company
+            $table->string('name');
             $table->string('phone');
             $table->string('email');
             $table->string('address')->nullable();
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

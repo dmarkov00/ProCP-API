@@ -3,12 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+
+use App\Company;
+
 use App\Load;
+use App\Location;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLoad;
+use App\User;
 
 class LoadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('custom');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +36,45 @@ class LoadController extends Controller
      */
     public function store(StoreLoad $request)
     {
-        return Load::create($request->all());
+        $load = new Load();
+        $load->startLocation_id = Location::where('city', $request->start_location)->first()->id;
+        $load->endLocation_id = Location::where('city', $request->end_location)->first()->id;
+        $load->content = $request->load_content;
+        $load->weight = $request->weight;
+        $load->deadline = $request->deadline;
+        $load->salary = $request->salary;
+        if($request->has('truckId')){
+            $load->truck_id=$request->truckId;
+        }
+        if(Client::where('name', $request->client)->first()!=null){
+            $load->client_id = Client::where('name', $request->client)->first()->id;
+            $load->save();
+            return response()->json($load);
+        }
+        elseif($request->has('name')&&$request->has('phone')&&$request->has('email')
+        &&$request->has('address')){
+            if(User::where('api_token', $request->header('api_token'))->first()->companyName!=null){
+                $company = User::where('api_token', $request->header('api_token'))->first()->companyName;
+                $company_id=Company::where('companyName', $company)->first()->id;
+                $client = new Client();
+                $client->company_id = $company_id;
+                $client->name=$request->name;
+                $client->phone=$request->phone;
+                $client->email=$request->email;
+                $client->address=$request->address;
+                $client->save();
+                $load->client_id=Client::where('company_id', $company_id)->where('name', $request->name)
+                    ->first()->id;
+                $load->save();
+                return response()->json($load);
+            }
+            else{
+                return response()->json(['status' => 403, 'message' => 'You have no company o.O.']);
+            }
+        }
+        else{
+            return response()->json(['status' => 403, 'message' => 'Unauthorized action2.']);
+        }
     }
 
     /**

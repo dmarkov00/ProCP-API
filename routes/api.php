@@ -32,6 +32,7 @@ Route::post('assignTo/load/{id}/client/{id}','LoadController@assignClient');
 
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');
 Route::middleware('custom')->post('/companies/{id}/assignTruck','CompanyController@assignTruck');
+Route::middleware('custom')->post('/users/{id}/assignCompanyToUser','CompanyController@assignCompanyToUser');
 
 
 Route::post('login','Auth\LoginController@login');

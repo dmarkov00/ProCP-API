@@ -25,10 +25,13 @@ class StoreLoad extends FormRequest
     {
         if ($this->isMethod('post')) {
             return [
-                'fName' => 'required',
-                'lName' => 'required',
-                'phone' => 'required',
-                'email' => 'required|email|unique:clients',
+                'load_content' => 'required',
+                'weight' => 'required',
+                'deadline' => 'required',
+                'salary' => 'required',
+                'start_location' => 'required',
+                'end_location' => 'required',
+                'client' => 'required',
             ];
         } elseif ($this->isMethod('put')) {
 //            return [
