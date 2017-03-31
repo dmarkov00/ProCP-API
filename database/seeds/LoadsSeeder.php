@@ -1,6 +1,7 @@
 <?php
 
 use App\Load;
+use Illuminate\Database\Seeder;
 
 class LoadsSeeder extends Seeder
 {
@@ -16,11 +17,11 @@ class LoadsSeeder extends Seeder
             $load->startLocation_id=1;
             $load->endLocation_id=1;
             $load->content="dummycontent";
+            $load->weight=55.5;
             $load->deadline=\Carbon\Carbon::now();
             $load->delivered=false;
             $load->salary=2250.75;
             $load->client_id=1;
-            $load->truck_id=1;
             $load->save();
         }
     }
