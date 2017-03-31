@@ -6,6 +6,7 @@ use App\Http\Requests\CreateCompany;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Truck;
+use App\User;
 
 class CompanyController extends Controller
 {
@@ -82,5 +83,14 @@ class CompanyController extends Controller
         $truck->company_id=$company->id;
         $truck->save();
         return response()->json("success");
+    }
+
+    public function assignCompanyToUser(Request $request, $id)
+    {
+        $company=Company::findOrFail($id)->companyName;
+        $user=User::where('api_token', $request->header('api_token'))->first();
+        $user->companyName=$company;
+        $user->save();
+        return response()->json($user);
     }
 }
