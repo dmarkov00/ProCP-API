@@ -67,7 +67,7 @@ class LoadController extends Controller
                 return response()->json($load);
             }
             else{
-                return response()->json(['status' => 403, 'message' => 'Unauthorized action.']);
+                return response()->json(['status' => 403, 'message' => 'You have no company o.O.']);
             }
         }
         else{
