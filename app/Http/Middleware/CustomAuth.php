@@ -23,6 +23,6 @@ class CustomAuth
                 return $next($request);
             }
         }
-        return response()->json(['status' => 403, 'message' => 'Unauthorized action.']);
+        return response('Unauthorized',401);
     }
 }

@@ -26,7 +26,7 @@ Route::resource('clients', 'ClientController',['except' => ['edit', 'create']]);
 
 Route::resource('loads', 'LoadController',['except' => ['edit', 'create']]);
 
-Route::post('assignTo/load/{id}/client/{id}','LoadController@assignClient');
+//Route::post('assignTo/load/{id}/client/{id}','LoadController@assignClient');
 
 
 

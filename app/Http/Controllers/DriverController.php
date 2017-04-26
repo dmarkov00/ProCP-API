@@ -22,12 +22,7 @@ class DriverController extends Controller
         return Driver::all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  App\Requests\StoreDriver $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(StoreDriver $request)
     {
           return Driver::create($request->all());
