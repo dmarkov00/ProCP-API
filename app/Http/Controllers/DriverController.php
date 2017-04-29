@@ -25,7 +25,8 @@ class DriverController extends Controller
 
     public function store(StoreDriver $request)
     {
-          return Driver::create($request->all());
+        return response()->json(Driver::create($request->all()), 201);
+//        return   Driver::create($request->all());
     }
 
     /**
@@ -34,7 +35,8 @@ class DriverController extends Controller
      * @param  \App\Driver $driver
      * @return \Illuminate\Http\Response
      */
-    public function show(Driver $driver)
+    public
+    function show(Driver $driver)
     {
         return response()->json($driver);
     }
@@ -46,7 +48,8 @@ class DriverController extends Controller
      * @param  \App\Driver $driver
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreDriver $request, Driver $driver)
+    public
+    function update(StoreDriver $request, Driver $driver)
     {
         $driver->fill($request->all());
         $driver->save();
@@ -58,7 +61,8 @@ class DriverController extends Controller
      * @param  \App\Driver $driver
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Driver $driver)
+    public
+    function destroy(Driver $driver)
     {
         $driver->delete();
     }

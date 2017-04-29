@@ -1,6 +1,9 @@
 <?php
 
 return [
+    // TEST TOKEN CONSTANT GOES HERE BECAUSE IT DIDN'T WORK IN SEPARATE FILE
+    'TEST_TOKEN' => 'mSk0YsMBx7UWu4wrDGAWiNdMnDWxlWZQFnt1wTPXeAA3hosfP293Na55lvFr',
+
 
     /*
     |--------------------------------------------------------------------------
