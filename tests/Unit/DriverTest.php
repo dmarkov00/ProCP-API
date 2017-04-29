@@ -55,11 +55,12 @@ class DriverTest extends TestCase
         $response = $this->post('/api/drivers', [],
             ['api_token' => 'mSk0YsMBx7UWu4wrDGAWiNdMnDWxlWZQFnt1wTPXeAA3hosfP293Na55lvFr']);
 
+        // the assertExactJson expects array so we have to convert expected json
         $response->assertStatus(422)
-            ->assertExactJson('{"email":["The email field is required."],
+            ->assertExactJson((array)json_decode('{"email":["The email field is required."],
             "fName":["The f name field is required."],
             "lName":["The l name field is required."],
-            "phoneNbr":["The phone nbr field is required."]}');
+            "phoneNbr":["The phone nbr field is required."]}'));
 
     }
 }
