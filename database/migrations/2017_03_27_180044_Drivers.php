@@ -15,11 +15,14 @@ class Drivers extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('company_id')->unsigned()->unique();
             $table->string('fName');
             $table->string('lName');
             $table->integer('phoneNbr');
             $table->boolean('taken')->default(false);
             $table->string('email');
+            $table->foreign('company_id')->references('id')->on('companies');
+
         });
 
     }

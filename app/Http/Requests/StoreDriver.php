@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -16,16 +17,18 @@ class StoreDriver extends FormRequest
     {
         return true;
     }
+
     public function wantsJson()
     {
         return true;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         if ($this->isMethod('post')) {
 
@@ -37,16 +40,17 @@ class StoreDriver extends FormRequest
             ];
         } elseif ($this->isMethod('put')) {
             // TODO: Research how to retrieve the current email of a the driver that is being updated
-//        return [
-//
-//            'email' => [
-//                'email',
-//                Rule::unique('drivers')->ignore($user->id)]
-//        ];
-            return [
 
-                'email' => 'required|email|unique:drivers,email'
-            ];
+//            return [
+//
+//                'email' => [
+//                    'required',
+//                    'email',
+////                    Rule::unique('drivers')->ignore($request->email, 'email')
+//                ]
+//            ];
+                return [];
+
         }
     }
 

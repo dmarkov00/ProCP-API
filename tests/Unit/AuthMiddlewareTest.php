@@ -17,7 +17,7 @@ class AuthMiddlewareTest extends TestCase
     // Just querying randomly chosen resource
     public function testSendingRequestWithToken()
     {
-        $response = $this->get('/api/drivers', ['api_token' => 'mSk0YsMBx7UWu4wrDGAWiNdMnDWxlWZQFnt1wTPXeAA3hosfP293Na55lvFr']);
+        $response = $this->get('/api/drivers', ['api_token' => config('constants.TEST_TOKEN')]);
 
         $response->assertStatus(200);
     }
