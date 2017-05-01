@@ -1,5 +1,5 @@
 <?php
 
 return  [
-    'TEST_TOKEN' => 'mSk0YsMBx7UWu4wrDGAWiNdMnDWxlWZQFnt1wTPXeAA3hosfP293Na55lvFr',
+    'TEST_TOKEN' => 'ADzbFafdPnvzbAj7jgYgA1RR5zUsiEiHUGJVl6fXnOx7DhoovLStOnkqzyrp',
 ];

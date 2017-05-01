@@ -28,7 +28,7 @@ class StoreDriver extends FormRequest
      *
      * @return array
      */
-    public function rules(Request $request)
+    public function rules()
     {
         if ($this->isMethod('post')) {
 

@@ -15,24 +15,15 @@ class LoginController extends Controller
 
     public function login(LoginUser $request)
     {
-        /*
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return response()->json('yes');
-            // Authentication passed...
-            return Auth::user();
-        }
-        */
         $user = User::where('email', $request->email)->first();
-        if ($user!=null) {
-            if(Hash::check($request->password, $user->password)){
+        if ($user != null) {
+            if (Hash::check($request->password, $user->password)) {
                 return $user;
+            } else {
+                return response()->json(['message' => 'Incorrect password'], 422);
             }
-            else{
-                return response()->json(['status' => 403, 'message' => 'Incorrect password']);
-            }
-        }
-        else {
-            abort(401);
+        } else {
+            abort(422);
         }
     }
 }

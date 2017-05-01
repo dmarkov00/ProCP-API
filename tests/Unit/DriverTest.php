@@ -29,14 +29,14 @@ class DriverTest extends TestCase
 
     public function testCreateDriverWithCorrectData()
     {
-        $response = $this->post('/api/drivers', ['fName' => 'Ivan', 'lName' => 'Shafiora', 'phoneNbr' => '023244', 'email' => 'vankataa@abv.bg'],
+        $response = $this->post('/api/drivers', ['fName' => 'Ivan', 'lName' => 'Truck', 'phoneNbr' => '023244', 'email' => 'truck@abv.bg'],
             ['api_token' => config('constants.TEST_TOKEN')]);
 
         $response->assertStatus(201)
             ->assertJson(['fName' => 'Ivan',
-                'lName' => 'Shafiora',
+                'lName' => 'Truck',
                 'phoneNbr' => '023244',
-                'email' => 'vankataa@abv.bg']);
+                'email' => 'truck@abv.bg']);
     }
 
     public function testCreateDriverWithIncorrectData()

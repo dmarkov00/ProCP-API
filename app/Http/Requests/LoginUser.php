@@ -15,7 +15,10 @@ class LoginUser extends FormRequest
     {
         return true;
     }
-
+    public function wantsJson()
+    {
+        return true;
+    }
     /**
      * Get the validation rules that apply to the request.
      *

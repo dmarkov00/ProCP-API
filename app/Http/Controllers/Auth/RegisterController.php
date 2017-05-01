@@ -17,12 +17,11 @@ class RegisterController extends Controller
      */
     public function register(CreateUser $request)
     {
-        return User::create([
+        return response()->json(User::create([
             'name' => $request->name,
             'email' => $request->email,
             'api_token' => str_random(60),
             'password' => bcrypt($request->password)
-        ]);
-
+        ]), 201);
     }
 }
