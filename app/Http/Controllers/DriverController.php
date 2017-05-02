@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDriver;
 use App\Driver;
+use App\User;
+use App\Company;
 
 class DriverController extends Controller
 {
@@ -25,8 +27,23 @@ class DriverController extends Controller
 
     public function store(StoreDriver $request)
     {
-        return response()->json(Driver::create($request->all()), 201);
-//        return   Driver::create($request->all());
+        // First we retrieve the company id
+        $user = User::where('api_token', $request->header('api_token'))->first();
+        $companyName = $user->companyName;
+        $company_id = Company::findOrFail($companyName)->company_id;
+
+        $driver = new Driver();
+        $driver->fName = $request->fName;
+        $driver->lName = $request->lName;
+        $driver->phoneNbr = $request->phoneNbr;
+        $driver->email = $request->email;
+        $driver->company_id = $company_id;
+
+
+        return response()->json($driver->save(), 201);
+
+        //return response()->json(Driver::create($request->all()), 201);
+        //return   Driver::create($request->all());
     }
 
     /**
