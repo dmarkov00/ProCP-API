@@ -76,6 +76,15 @@ class CompanyController extends Controller
         return response()->json($trucks);
     }
 
+    public function assignTruckToDriver(Request $request, $id)
+    {
+        $truck=Truck::findOrFail($id);
+        $driver=Truck::findOrFail($request->driver_id);
+        $truck->driver_id=$driver->id;
+        $truck->save();
+        return response()->json("success");
+    }
+
     public function assignTruck(Request $request, $id)
     {
         $company=Company::findOrFail($id);

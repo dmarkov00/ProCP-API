@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreLoad;
 use App\User;
 
-class LoadController extends Controller
+class TrucksController extends Controller
 {
     public function __construct()
     {

@@ -32,7 +32,8 @@ Route::resource('trucks', 'TrucksController',['except' => ['edit', 'create']]);
 
 
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');
-Route::middleware('custom')->post('/companies/{id}/assignTr uck','CompanyController@assignTruck');
+Route::middleware('custom')->post('/companies/{id}/assignTruck','CompanyController@assignTruck');
+Route::middleware('custom')->post('/companies/{id}/assignTruckToDriver','CompanyController@assignTruckToDriver');
 Route::middleware('custom')->post('/users/{id}/assignCompanyToUser','CompanyController@assignCompanyToUser');
 
 
