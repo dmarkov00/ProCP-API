@@ -10,8 +10,4 @@ class Load extends Model
     // Making all attributes mass assignable
     protected $guarded = [];
 
-    public function client()
-    {
-        return $this->hasOne('Client');
-    }
 }

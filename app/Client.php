@@ -11,9 +11,5 @@ class Client extends Model
     // Making all attributes mass assignable
     protected $guarded = [];
 
-    public function load()
-    {
-        $this->belongsToMany('Load');
-    }
 
 }

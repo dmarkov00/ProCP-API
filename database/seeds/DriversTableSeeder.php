@@ -17,6 +17,7 @@ class DriversTableSeeder extends Seeder
             $user->fName="Driver".$i;
             $user->lName="Driver".$i;
             $user->phoneNbr=$i.$i.$i;
+            $user->company_id=1;
             $user->email="john".$i."@gmail.com";
             $user->save();
         }

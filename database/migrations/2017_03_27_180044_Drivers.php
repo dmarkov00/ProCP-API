@@ -15,7 +15,7 @@ class Drivers extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned()->unique();
+            $table->integer('company_id')->unsigned();
             $table->string('fName');
             $table->string('lName');
             $table->integer('phoneNbr');
