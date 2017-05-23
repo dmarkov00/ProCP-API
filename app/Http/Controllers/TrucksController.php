@@ -46,7 +46,8 @@ class TrucksController extends Controller
         $truck->height = $request->height;
         $truck->width = $request->width;
         $truck->length = $request->length;
-        return response()->json($truck->save(), 201);
+        $truck->save();
+        return response()->json($truck, 201);
     }
 
     /**

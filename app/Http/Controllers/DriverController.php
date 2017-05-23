@@ -39,8 +39,8 @@ class DriverController extends Controller
         $driver->email = $request->email;
         $driver->company_id = $company_id;
 
-
-        return response()->json($driver->save(), 201);
+        $driver->save();
+        return response()->json($driver, 201);
 
         //return response()->json(Driver::create($request->all()), 201);
         //return   Driver::create($request->all());
