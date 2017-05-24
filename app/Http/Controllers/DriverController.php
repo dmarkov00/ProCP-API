@@ -68,8 +68,9 @@ class DriverController extends Controller
     public
     function update(StoreDriver $request, Driver $driver)
     {
-            $driver->fill($request->all());
-            $driver->save();
+        $driver->fill($request->all());
+        $driver->save();
+        return response()->json($driver, 200);
     }
 
     /**
@@ -81,6 +82,6 @@ class DriverController extends Controller
     public
     function destroy(Driver $driver)
     {
-            $driver->delete();
+        $driver->delete();
     }
 }

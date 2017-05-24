@@ -6,6 +6,7 @@ use App\Client;
 
 use App\Company;
 
+use App\Http\Requests\StoreTruck;
 use App\Load;
 use App\Location;
 use App\Truck;
@@ -13,7 +14,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreLoad;
 use App\User;
 
-class TrucksController extends Controller
+class TruckController extends Controller
 {
     public function __construct()
     {
@@ -35,7 +36,7 @@ class TrucksController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTruck $request)
     {
         $truck = new Truck();
         $truck->licensePlate = $request->licensePlate;
@@ -68,10 +69,12 @@ class TrucksController extends Controller
      * @param  \App\Load $load
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Truck $truck)
+    public function update(StoreTruck $request, Truck $truck)
     {
         $truck->fill($request->all());
         $truck->save();
+        return response()->json($truck, 200);
+
     }
 
     /**
