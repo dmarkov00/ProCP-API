@@ -23,6 +23,7 @@ class LoadsSeeder extends Seeder
             $load->delivered=false;
             $load->salary=2250.75;
             $load->client_id=1;
+            $load->truck_id=1;
             $load->save();
         }
     }
