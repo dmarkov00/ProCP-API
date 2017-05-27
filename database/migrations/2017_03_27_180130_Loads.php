@@ -19,17 +19,13 @@ class Loads extends Migration
             $table->integer('endLocation_id')->unsigned();
             $table->string('content');
             $table->double('weight');
-<<<<<<< HEAD
             $table->dateTime('deadline');
-			$table->dateTime('arrivaldate');
-=======
-            $table->date('deadline');
-            $table->date('actualArrivalTime');
->>>>>>> c455a64df05dc23750445ba60ef48802f9237c0c
+			$table->dateTime('arrivaldate')->nullable();
             $table->boolean('delivered')->default(false);
+			$table->integer('loadstatus')->default(1); //1 for available, 2 for ontransport, 3 for delivered
             $table->double('fullsalary');
 			$table->double('delayfeePercHour');
-			$table->double('finalsalary');
+			$table->double('finalsalary')->nullable();
             $table->integer('client_id')->unsigned();
             $table->integer('truck_id')->unsigned()->nullable();
             //$table->foreign('startLocation_id')->references('id')->on('locations')->onDelete('cascade');
