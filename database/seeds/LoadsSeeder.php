@@ -25,6 +25,7 @@ class LoadsSeeder extends Seeder
 			$load->delayfeePercHour=5;
 			$load->finalsalary=2250.75;
             $load->client_id=1;
+            $load->truck_id=1;
             $load->save();
         }
     }

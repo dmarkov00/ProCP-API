@@ -19,8 +19,13 @@ class Loads extends Migration
             $table->integer('endLocation_id')->unsigned();
             $table->string('content');
             $table->double('weight');
+<<<<<<< HEAD
             $table->dateTime('deadline');
 			$table->dateTime('arrivaldate');
+=======
+            $table->date('deadline');
+            $table->date('actualArrivalTime');
+>>>>>>> c455a64df05dc23750445ba60ef48802f9237c0c
             $table->boolean('delivered')->default(false);
             $table->double('fullsalary');
 			$table->double('delayfeePercHour');

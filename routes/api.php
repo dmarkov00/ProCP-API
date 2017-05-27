@@ -12,10 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// tfa nz ko prai :D
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 
 //It is only possible to see the drivers.
 Route::resource('drivers', 'DriverController', ['except' => ['edit', 'create']]);
