@@ -52,8 +52,8 @@ class DriverController extends Controller
      * @param  \App\Driver $driver
      * @return \Illuminate\Http\Response
      */
-    public
-    function show(Driver $driver)
+
+public function show(Driver $driver)
     {
         return response()->json($driver);
     }

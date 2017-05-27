@@ -20,6 +20,7 @@ class Loads extends Migration
             $table->string('content');
             $table->double('weight');
             $table->date('deadline');
+            $table->date('actualArrivalTime');
             $table->boolean('delivered')->default(false);
             $table->double('salary');
             $table->integer('client_id')->unsigned();
