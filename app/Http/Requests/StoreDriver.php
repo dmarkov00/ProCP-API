@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+
 use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -39,17 +40,16 @@ class StoreDriver extends FormRequest
                 'email' => 'required|email|unique:drivers,email'
             ];
         } elseif ($this->isMethod('put')) {
-            // TODO: Research how to retrieve the current email of a the driver that is being updated
-
-//            return [
-//
-//                'email' => [
-//                    'required',
-//                    'email',
-////                    Rule::unique('drivers')->ignore($request->email, 'email')
-//                ]
-//            ];
-                return [];
+            return [
+                'fName' => 'required',
+                'lName' => 'required',
+                'phoneNbr' => 'required',
+                'email' => [
+                    'required',
+                    'email',
+                    Rule::unique('drivers')->ignore($this->driver->id)
+                ]
+            ];
 
         }
     }
