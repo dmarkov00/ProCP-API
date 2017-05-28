@@ -19,7 +19,7 @@ class Trucks extends Migration
             $table->integer('driver_id')->unsigned()->nullable();
             $table->integer('company_id')->unsigned()->nullable();
             $table->integer('location_id')->unsigned()->nullable();
-            $table->double('avgFuelComsumption')->nullable();
+            $table->double('avgFuelComsumption')->default(0);
             $table->double('payLoadCapacity')->nullable();
             $table->double('weight');
             $table->double('height');
