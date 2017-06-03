@@ -18,9 +18,10 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Client::all();
+
+        return Client::where('company_id',$request->company_id)->get();
     }
 
     /**
@@ -42,6 +43,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
+
         return response()->json($client);
     }
 
