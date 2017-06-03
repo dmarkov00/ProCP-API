@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use App\Client;
-use App\Driver;
-use App\Policies\DriverPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -17,7 +14,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
-
     ];
 
     /**

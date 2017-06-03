@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDriver;
 use App\Driver;
 use App\User;
 use App\Company;
+use Illuminate\Http\Request;
 
 class DriverController extends Controller
 {
@@ -19,9 +20,9 @@ class DriverController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Driver::all();
+        return Driver::where('company_id',$request->company_id)->get();
     }
 
 

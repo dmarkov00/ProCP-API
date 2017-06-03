@@ -25,9 +25,9 @@ class TruckController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Truck::all();
+        return Truck::where('company_id',$request->company_id)->get();
     }
 
     /**

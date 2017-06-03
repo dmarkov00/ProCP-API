@@ -19,6 +19,7 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // We don't need to show all companies, to be removed later
     public function index()
     {
         return Company::all();
@@ -41,6 +42,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show(Company $company)
     {
         return response()->json($company);
