@@ -28,6 +28,8 @@ class LoadsSeeder extends Seeder
 			$load->finalsalary=2250.75;
             $load->client_id=1;
             $load->truck_id=1;
+            $load->driver_id=1;
+            $load->route_id=1;
             $load->save();
         }
 		
@@ -48,6 +50,8 @@ class LoadsSeeder extends Seeder
 			$load->finalsalary=null;
             $load->client_id=2;
             $load->truck_id=2;
+            $load->driver_id=2;
+            $load->route_id=2;
             $load->save();
         }
 		
@@ -67,6 +71,8 @@ class LoadsSeeder extends Seeder
 			$load->finalsalary=null;
             $load->client_id=2;
             $load->truck_id=2;
+            $load->driver_id=2;
+            $load->route_id=2;
             $load->save();
         }
 		
@@ -85,6 +91,8 @@ class LoadsSeeder extends Seeder
 			$load->finalsalary=null;
             $load->client_id=2;
             $load->truck_id=2;
+            $load->driver_id=3;
+            $load->route_id=3;
             $load->save();
         }
 		
@@ -103,6 +111,8 @@ class LoadsSeeder extends Seeder
 			$load->finalsalary=null;
             $load->client_id=2;
             $load->truck_id=2;
+            $load->driver_id=2;
+            $load->route_id=2;
             $load->save();
         }
 		
@@ -121,6 +131,8 @@ class LoadsSeeder extends Seeder
 			$load->finalsalary=null;
             $load->client_id=2;
             $load->truck_id=2;
+            $load->driver_id=2;
+            $load->route_id=4;
             $load->save();
         }
 		
