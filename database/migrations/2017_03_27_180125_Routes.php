@@ -19,12 +19,15 @@ class Routes extends Migration
             $table->integer('est_distance');
             $table->double('est_fuelConsumption');
             $table->double('est_cost');
-            $table->integer('act_time_driving');
+            $table->integer('act_time_used');
             $table->integer('act_distance');
             $table->double('act_fuelConsumption');
             $table->double('act_cost');
             $table->double('sum_salaries');
+            $table->double('sum_actual_salaries');
             $table->double('revenue');
+            $table->integer('start_location_id');
+            $table->integer('end_location_id');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->integer('truck_id')->unsigned()->unique();
