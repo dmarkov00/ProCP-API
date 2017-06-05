@@ -23,6 +23,7 @@ class DriverController extends Controller
     public function index(Request $request)
     {
         return Driver::where('company_id',$request->company_id)->get();
+
     }
 
 
@@ -54,7 +55,7 @@ class DriverController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-public function show(Driver $driver)
+    public function show(Driver $driver)
     {
         return response()->json($driver);
     }
@@ -66,8 +67,8 @@ public function show(Driver $driver)
      * @param  \App\Driver $driver
      * @return \Illuminate\Http\Response
      */
-    public
-    function update(StoreDriver $request, Driver $driver)
+
+    public function update(StoreDriver $request, Driver $driver)
     {
         $driver->fill($request->all());
         $driver->save();
@@ -80,8 +81,8 @@ public function show(Driver $driver)
      * @param  \App\Driver $driver
      * @return \Illuminate\Http\Response
      */
-    public
-    function destroy(Driver $driver)
+
+    public function destroy(Driver $driver)
     {
         $driver->delete();
     }

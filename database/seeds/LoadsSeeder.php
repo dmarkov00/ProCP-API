@@ -113,6 +113,7 @@ class LoadsSeeder extends Seeder
             $load->truck_id=2;
             $load->driver_id=2;
             $load->route_id=2;
+            $load->company_id=2;
             $load->save();
         }
 		

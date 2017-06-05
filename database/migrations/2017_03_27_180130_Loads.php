@@ -19,7 +19,7 @@ class Loads extends Migration
             $table->integer('endLocation_id')->unsigned();
             $table->integer('route_id')->unsigned()->nullable();
             $table->integer('driver_id')->unsigned()->nullable();
-
+            $table->integer('company_id')->unsigned()->nullable();
             $table->string('content');
             $table->double('weight');
             $table->dateTime('deadline');
@@ -36,6 +36,8 @@ class Loads extends Migration
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
             $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('routes')->onDelete('cascade');
+
 
         });
 
