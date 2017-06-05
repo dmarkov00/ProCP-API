@@ -29,7 +29,7 @@ class Trucks extends Migration
             $table->boolean('broken')->default(false);
             $table->timestamps();
             //$table->foreign('driver_id')->references('id')->on('drivers');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             
         });
     }
