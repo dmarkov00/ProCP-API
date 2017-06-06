@@ -14,7 +14,7 @@ class ClientsSeeder extends Seeder
     {
         for($i=0; $i<=10; $i++){
             $client = new Client();
-            $client->company_id=1;
+            $client->company_id=2;
             $client->name="dummyname";
             $client->phone="dummyphone".$i;
             $client->email="mail@mail.com";
