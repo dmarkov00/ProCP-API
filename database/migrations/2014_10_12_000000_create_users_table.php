@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->string('companyName')->nullable();
+			$table->integer('companyId')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('companyName')->references('companyName')->on('companies')->onDelete('cascade');
