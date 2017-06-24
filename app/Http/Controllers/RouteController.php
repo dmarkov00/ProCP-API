@@ -23,6 +23,17 @@ class RouteController extends Controller
 
     }
 
+
+    public function markAsDelivered($id)
+    {
+        $route=Route::findOrFail($id);
+        $route->delivered=1;
+        $route->save();
+        return response()->json("success");
+        //return Route::create($request->all());
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *

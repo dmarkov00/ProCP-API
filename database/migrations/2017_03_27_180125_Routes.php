@@ -30,6 +30,7 @@ class Routes extends Migration
             $table->integer('end_location_id');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
+            $table->boolean('delivered')->default(false);
             $table->integer('truck_id')->unsigned()->unique();
             $table->integer('company_id')->unsigned()->unique();
             $table->foreign('truck_id')->references('id')->on('trucks')->onDelete('cascade');

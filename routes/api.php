@@ -29,6 +29,7 @@ Route::resource('routes', 'RouteController',['except' => ['edit', 'create']]);
 //Route::post('assignTo/load/{id}/client/{id}','LoadController@assignClient');
 
 
+Route::middleware('custom')->get('/routes/delivered/{id}','RouteController@markAsDelivered');
 
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');
 Route::middleware('custom')->post('/companies/{id}/assignTruck','CompanyController@assignTruck');
