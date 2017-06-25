@@ -31,6 +31,7 @@ class DriverController extends Controller
         $driver=Driver::findOrFail($id);
         $driver->taken=1;
         $driver->save();
+        return response()->json($driver);
     }
 
     public function unsetTaken($id)
@@ -38,6 +39,7 @@ class DriverController extends Controller
         $driver=Driver::findOrFail($id);
         $driver->taken=0;
         $driver->save();
+        return response()->json($driver);
     }
 
 

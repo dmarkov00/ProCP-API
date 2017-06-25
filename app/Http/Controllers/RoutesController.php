@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Route;
 use Illuminate\Http\Request;
+use App\Truck;
 
 class RoutesController extends Controller
 {
@@ -21,6 +22,23 @@ class RoutesController extends Controller
     {
         return Route::where('company_id', $request->company_id)->get();
 
+    }
+
+    public function setTruckTaken($id)
+    {
+        //return response()->json("success");
+        $truck=Truck::findOrFail($id);
+        $truck->taken=1;
+        $truck->save();
+        return response()->json($truck, 201);
+    }
+
+    public function unsetTruckTaken($id)
+    {
+        $truck=Truck::findOrFail($id);
+        $truck->taken=0;
+        $truck->save();
+        return response()->json($truck, 201);
     }
 
     public function markAsDelivered($id, Request $request)

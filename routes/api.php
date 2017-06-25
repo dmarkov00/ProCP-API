@@ -33,8 +33,8 @@ Route::resource('users', 'UserController',['except' => ['edit', 'create']]);
 Route::middleware('custom')->get('/drivers/taken/{id}','DriverController@setTaken');
 Route::middleware('custom')->get('/drivers/untaken/{id}','DriverController@unsetTaken');
 //make truck and driver not taken
-Route::middleware('custom')->get('/trucks/taken/{id}','TruckController@setTaken');
-Route::middleware('custom')->get('/trucks/taken/{id}','TruckController@unsetTaken');
+Route::middleware('custom')->get('/trucks/taken/{id}','RoutesController@setTruckTaken');
+Route::middleware('custom')->get('/trucks/untaken/{id}','RoutesController@unsetTruckTaken');
 
 //Route::post('/clients/add/','ClientController@store');
 Route::middleware('custom')->get('/routes/delivered/{id}','RoutesController@markAsDelivered');

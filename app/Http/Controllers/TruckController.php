@@ -30,20 +30,6 @@ class TruckController extends Controller
         return Truck::where('company_id',$request->company_id)->get();
     }
 
-    public function setTaken($id)
-    {
-        $truck=Truck::findOrFail($id);
-        $truck->taken=1;
-        $truck->save();
-    }
-
-    public function unsetTaken($id)
-    {
-        $truck=Truck::findOrFail($id);
-        $truck->taken=0;
-        $truck->save();
-    }
-
     /**
      * Store a newly created resource in storage.
      *
