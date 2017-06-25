@@ -18,7 +18,7 @@ Route::resource('drivers', 'DriverController', ['except' => ['edit', 'create']])
 
 Route::resource('companies', 'CompanyController',['except' => ['edit', 'create']]);
 
-Route::resource('clients', 'ClientController',['except' => ['edit', 'create']]);
+Route::resource('clients', 'ClientsController',['except' => ['edit', 'create']]);
 
 Route::resource('loads', 'LoadController',['except' => ['edit', 'create']]);
 
@@ -28,7 +28,7 @@ Route::resource('routes', 'RouteController',['except' => ['edit', 'create']]);
 
 //Route::post('assignTo/load/{id}/client/{id}','LoadController@assignClient');
 
-
+//Route::post('/clients/add/','ClientController@store');
 Route::middleware('custom')->get('/routes/delivered/{id}','RouteController@markAsDelivered');
 
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');

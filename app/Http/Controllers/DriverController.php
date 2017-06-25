@@ -30,16 +30,17 @@ class DriverController extends Controller
     public function store(StoreDriver $request)
     {
         // First we retrieve the company id
-        $user = User::where('api_token', $request->header('api_token'))->first();
-        $companyName = $user->companyName;
-        $company_id = Company::findOrFail($companyName)->company_id;
+        //$user = User::where('api_token', $request->header('api_token'))->first();
+        //$companyName = $user->companyName;
+        //$company_id = Company::findOrFail($companyName)->company_id;
 
         $driver = new Driver();
+        $driver->company_id = $request->company_id;
         $driver->fName = $request->fName;
         $driver->lName = $request->lName;
         $driver->phoneNbr = $request->phoneNbr;
         $driver->email = $request->email;
-        $driver->company_id = $company_id;
+        //$driver->company_id = $company_id;
 
         $driver->save();
         return response()->json($driver, 201);

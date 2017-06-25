@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreClient;
 
-class ClientController extends Controller
+class ClientsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('custom');
@@ -25,22 +23,26 @@ class ClientController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    public function create()
+    {
 
-    public function store(StoreClient $request)
-    {
-        return response()->json("vleze");
     }
-    /*
-    public function store(StoreClient $request)
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        return response()->json("vleze");
+        //return response()->json($request->company);
         $client = new Client();
-        $client->company_id = $request->company_id;
+        $client->company_id = $request->company;
         $client->name = $request->name;
         $client->phone = $request->phone;
         $client->address = $request->address;
@@ -50,17 +52,28 @@ class ClientController extends Controller
         $client->save();
         return response()->json($client, 201);
     }
-*/
+
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Client $client)
     {
 
         return response()->json($client);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
