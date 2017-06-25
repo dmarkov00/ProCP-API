@@ -29,6 +29,12 @@ Route::resource('routes', 'RoutesController',['except' => ['edit', 'create']]);
 Route::resource('users', 'UserController',['except' => ['edit', 'create']]);
 
 //Route::post('assignTo/load/{id}/client/{id}','LoadController@assignClient');
+//make truck and driver taken
+Route::middleware('custom')->get('/drivers/taken/{id}','DriverController@setTaken');
+Route::middleware('custom')->get('/drivers/untaken/{id}','DriverController@unsetTaken');
+//make truck and driver not taken
+Route::middleware('custom')->get('/routes/delivered/{id}','RoutesController@markAsDelivered');
+Route::middleware('custom')->get('/routes/delivered/{id}','RoutesController@markAsDelivered');
 
 //Route::post('/clients/add/','ClientController@store');
 Route::middleware('custom')->get('/routes/delivered/{id}','RoutesController@markAsDelivered');

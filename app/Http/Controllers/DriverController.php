@@ -26,6 +26,20 @@ class DriverController extends Controller
 
     }
 
+    public function setTaken($id)
+    {
+        $driver=Driver::findOrFail($id);
+        $driver->taken=1;
+        $driver->save();
+    }
+
+    public function unsetTaken($id)
+    {
+        $driver=Driver::findOrFail($id);
+        $driver->taken=0;
+        $driver->save();
+    }
+
 
     public function store(StoreDriver $request)
     {
