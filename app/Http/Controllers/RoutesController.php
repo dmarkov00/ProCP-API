@@ -23,12 +23,18 @@ class RoutesController extends Controller
 
     }
 
-    public function markAsDelivered($id)
+    public function markAsDelivered($id, Request $request)
     {
         $route=Route::findOrFail($id);
         $route->delivered=1;
+        $route->act_time_used=$request->act_time_used;
+        $route->act_distance=$request->act_distance;
+        $route->act_fuelConsumption=$request->act_fuelConsumption;
+        $route->act_cost=$request->act_cost;
+        $route->sum_actual_salaries=$request->sum_actual_salaries;
+        $route->revenue=$request->revenue;
         $route->save();
-        return response()->json("success");
+        return response()->json($route);
         //return Route::create($request->all());
 
     }

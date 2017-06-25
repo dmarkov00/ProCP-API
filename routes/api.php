@@ -31,7 +31,8 @@ Route::resource('users', 'UserController',['except' => ['edit', 'create']]);
 //Route::post('assignTo/load/{id}/client/{id}','LoadController@assignClient');
 
 //Route::post('/clients/add/','ClientController@store');
-Route::middleware('custom')->get('/routes/delivered/{id}','RouteController@markAsDelivered');
+Route::middleware('custom')->get('/routes/delivered/{id}','RoutesController@markAsDelivered');
+Route::middleware('custom')->post('/routes/delivered/{id}','RoutesController@markAsDelivered');
 Route::middleware('custom')->post('/users/update/{id}','UserController@updateUser');
 
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');
