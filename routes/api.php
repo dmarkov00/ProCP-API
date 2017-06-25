@@ -34,6 +34,7 @@ Route::middleware('custom')->get('/routes/delivered/{id}','RouteController@markA
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');
 Route::middleware('custom')->post('/companies/{id}/assignTruck','CompanyController@assignTruck');
 Route::middleware('custom')->post('/loads/{id}','LoadController@updateLoad');
+Route::middleware('custom')->post('/trucks/setLocation/{id}/{locationId}','TruckController@setLocation');
 Route::middleware('custom')->post('/companies/{id}/assignTruckToDriver','CompanyController@assignTruckToDriver');
 Route::middleware('custom')->post('/users/{id}/assignCompanyToUser','CompanyController@assignCompanyToUser');
 

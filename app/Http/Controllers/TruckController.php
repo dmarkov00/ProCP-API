@@ -51,6 +51,14 @@ class TruckController extends Controller
         return response()->json($truck, 201);
     }
 
+    public function setLocation($id, $locationId)
+    {
+        $truck = Truck::findOrFail($id);
+        $truck->location_id = $locationId;
+        $truck->save();
+        return response()->json($truck, 201);
+    }
+
     /**
      * Display the specified resource.
      *
