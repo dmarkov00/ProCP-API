@@ -2,52 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
-
-use App\Company;
-
 use App\Load;
-use App\Location;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreLoad;
-use App\User;
 
-class LoadController extends Controller
+class LoadsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('custom');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return Load::where('company_id',$request->company_id)->get();
+        //
     }
 
-    public function updateLoad(Request $request, $id)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $load=Load::findOrFail($id);
-        $load->driver_id=$request->driver_id;
-        $load->route_id=$request->route_id;
-        $load->truck_id=$request->truck_id;
-        $load->loadstatus=$request->loadstatus;
-        $load->save();
-        return response()->json("success");
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLoad $request)
+    public function store(Request $request)
     {
-        return response()->json("success");
         $load = new Load();
         $load->startLocation_id = Location::where('city', $request->start_location)->first()->id;
         $load->endLocation_id = Location::where('city', $request->end_location)->first()->id;
@@ -64,7 +51,7 @@ class LoadController extends Controller
             return response()->json($load);
         }
         elseif($request->has('name')&&$request->has('phone')&&$request->has('email')
-        &&$request->has('address')){
+            &&$request->has('address')){
             if(User::where('api_token', $request->header('api_token'))->first()->companyName!=null){
                 $company = User::where('api_token', $request->header('api_token'))->first()->companyName;
                 $company_id=Company::where('companyName', $company)->first()->id;
@@ -87,45 +74,51 @@ class LoadController extends Controller
         else{
             return response()->json(['status' => 403, 'message' => 'Unauthorized action2.']);
         }
+        return response()->json("success");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Load $load
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Load $load)
+    public function show($id)
     {
-        return response()->json($load);
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Load $load
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Load $load)
+    public function update(Request $request, $id)
     {
-        $load->fill($request->all());
-        $load->save();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Load $load
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Load $load)
+    public function destroy($id)
     {
-        $load->delete();
+        //
     }
-    public function  assignClient(Load $load, Client $client){
-//        $load
-
-    }
-
 }

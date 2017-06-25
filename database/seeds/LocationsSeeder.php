@@ -12,6 +12,14 @@ class LocationsSeeder extends Seeder
      */
     public function run()
     {
+        $location = new Location();
+        $location->house_Nbr="myHouseNumber1";
+        $location->street="myStree1t";
+        $location->city="Berlin";
+        $location->contry="Germany";
+        $location->ZIP="0001";
+        $location->save();
+        /*
         for($i=0; $i<=10; $i++){
             $location = new Location();
             $location->house_Nbr="myHouseNumber".$i;
@@ -20,6 +28,6 @@ class LocationsSeeder extends Seeder
             $location->contry="Belgium";
             $location->ZIP="dummyZIPs";
             $location->save();
-        }
+        }*/
     }
 }

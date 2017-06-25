@@ -15,27 +15,27 @@ class Routes extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('est_time_driving');
-            $table->integer('est_distance');
-            $table->double('est_fuelConsumption');
-            $table->double('est_cost');
-            $table->integer('act_time_used');
-            $table->integer('act_distance');
-            $table->double('act_fuelConsumption');
-            $table->double('act_cost');
-            $table->double('sum_salaries');
-            $table->double('sum_actual_salaries');
-            $table->double('revenue');
-            $table->integer('start_location_id');
-            $table->integer('end_location_id');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
-            $table->boolean('delivered')->default(false);
-            $table->integer('truck_id')->unsigned()->unique();
-            $table->integer('company_id')->unsigned()->unique();
-            $table->foreign('truck_id')->references('id')->on('trucks')->onDelete('cascade');
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-        });
+            $table->integer('est_time_driving')->nullable()->default("0");
+        $table->integer('est_distance')->nullable()->default("0");
+        $table->double('est_fuelConsumption')->nullable()->default("0");
+        $table->double('est_cost')->nullable()->default("0");
+        $table->integer('act_time_used')->nullable()->default("0");
+        $table->integer('act_distance')->nullable()->default("0");
+        $table->double('act_fuelConsumption')->nullable()->default("0");
+        $table->double('act_cost')->nullable()->default("0");
+        $table->double('sum_salaries')->nullable()->default("0");
+        $table->double('sum_actual_salaries')->nullable()->default("0");
+        $table->double('revenue')->nullable()->default("0");
+        $table->integer('start_location_id')->nullable()->default("0");
+        $table->integer('end_location_id')->nullable()->default("0");
+        $table->string('start_time')->nullable();
+        $table->string('end_time')->nullable();
+        $table->boolean('delivered')->default(false)->default("0");
+        $table->integer('truck_id')->unsigned()->default("0");
+        $table->integer('company_id')->unsigned()->default("0");
+        $table->foreign('truck_id')->references('id')->on('trucks')->onDelete('cascade');
+        $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+    });
     }
 
     /**

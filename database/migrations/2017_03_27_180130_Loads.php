@@ -22,8 +22,8 @@ class Loads extends Migration
             $table->integer('company_id')->unsigned()->nullable();
             $table->string('content');
             $table->double('weight');
-            $table->dateTime('deadline');
-			$table->dateTime('arrivaldate')->nullable();
+            $table->string('deadline');
+			$table->string('arrivaldate')->nullable();
             $table->boolean('delivered')->default(false);
 			$table->integer('loadstatus')->default(1); //1 for available, 2 for ontransport, 3 for delivered
             $table->double('fullsalary');
