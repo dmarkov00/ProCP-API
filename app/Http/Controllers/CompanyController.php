@@ -80,6 +80,7 @@ class CompanyController extends Controller
 
     public function assignTruckToDriver(Request $request, $id)
     {
+        //return response()->json("success");
         $truck=Truck::findOrFail($id);
         $driver=Truck::findOrFail($request->driver_id);
         $truck->driver_id=$driver->id;
@@ -89,9 +90,9 @@ class CompanyController extends Controller
 
     public function assignTruck(Request $request, $id)
     {
-        $company=Company::findOrFail($id);
-        $truck=Truck::findOrFail($request->truck_id);
-        $truck->company_id=$company->id;
+       // return response()->json($request);
+        $truck=Truck::findOrFail($id);
+        $truck->driver_id=$request->driver_id;
         $truck->save();
         return response()->json("success");
     }
