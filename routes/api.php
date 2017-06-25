@@ -20,7 +20,7 @@ Route::resource('companies', 'CompanyController',['except' => ['edit', 'create']
 
 Route::resource('clients', 'ClientsController',['except' => ['edit', 'create']]);
 
-Route::resource('loads', 'LoadController',['except' => ['edit', 'create']]);
+Route::resource('loads', 'LoadsController',['except' => ['edit', 'create']]);
 
 Route::resource('trucks', 'TruckController',['except' => ['edit', 'create']]);
 

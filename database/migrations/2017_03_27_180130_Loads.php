@@ -27,9 +27,9 @@ class Loads extends Migration
             $table->boolean('delivered')->default(false);
 			$table->integer('loadstatus')->default(1); //1 for available, 2 for ontransport, 3 for delivered
             $table->double('fullsalary');
-			$table->double('delayfeePercHour');
+			$table->double('delayfeePercHour')->nullable();
 			$table->double('finalsalary')->nullable();
-            $table->integer('client_id')->unsigned();
+            $table->integer('client_id')->default(1)->unsigned();
             $table->integer('truck_id')->unsigned()->nullable();
             //$table->foreign('startLocation_id')->references('id')->on('locations')->onDelete('cascade');
             //$table->foreign('endLocation_id')->references('id')->on('locations')->onDelete('cascade');

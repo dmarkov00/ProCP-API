@@ -7,24 +7,29 @@ use Illuminate\Http\Request;
 
 class LoadsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('custom');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return Load::where('company_id',$request->company_id)->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function updateLoad(Request $request, $id)
     {
-        //
+        $load=Load::findOrFail($id);
+        $load->driver_id=$request->driver_id;
+        $load->route_id=$request->route_id;
+        $load->truck_id=$request->truck_id;
+        $load->loadstatus=$request->loadstatus;
+        $load->save();
+        return response()->json("success");
     }
 
     /**
@@ -36,12 +41,18 @@ class LoadsController extends Controller
     public function store(Request $request)
     {
         $load = new Load();
-        $load->startLocation_id = Location::where('city', $request->start_location)->first()->id;
-        $load->endLocation_id = Location::where('city', $request->end_location)->first()->id;
+
+        $load->startLocation_id = $request->startLocation_id;
+        $load->endLocation_id = $request->endLocation_id;
         $load->content = $request->load_content;
         $load->weight = $request->weight;
         $load->deadline = $request->deadline;
-        $load->salary = $request->salary;
+        $load->fullsalary = $request->fullsalary;
+        $load->delayfeePercHour = $request->delayfeePercHour;
+        $load->client_id = $request->client_id;
+        $load->save();
+        return response()->json($load);
+        /*
         if($request->has('truckId')){
             $load->truck_id=$request->truckId;
         }
@@ -73,7 +84,7 @@ class LoadsController extends Controller
         }
         else{
             return response()->json(['status' => 403, 'message' => 'Unauthorized action2.']);
-        }
+        }*/
         return response()->json("success");
     }
 
@@ -83,9 +94,9 @@ class LoadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Load $load)
     {
-        //
+        return response()->json($load);
     }
 
     /**
@@ -106,9 +117,10 @@ class LoadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Load $load)
     {
-        //
+        $load->fill($request->all());
+        $load->save();
     }
 
     /**
@@ -117,8 +129,8 @@ class LoadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Load $load)
     {
-        //
+        $load->delete();
     }
 }
