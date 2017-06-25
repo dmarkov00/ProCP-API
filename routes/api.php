@@ -26,14 +26,18 @@ Route::resource('trucks', 'TruckController',['except' => ['edit', 'create']]);
 
 Route::resource('routes', 'RoutesController',['except' => ['edit', 'create']]);
 
+Route::resource('users', 'UserController',['except' => ['edit', 'create']]);
+
 //Route::post('assignTo/load/{id}/client/{id}','LoadController@assignClient');
 
 //Route::post('/clients/add/','ClientController@store');
 Route::middleware('custom')->get('/routes/delivered/{id}','RouteController@markAsDelivered');
+Route::middleware('custom')->post('/users/update/{id}','UserController@updateUser');
 
 Route::middleware('custom')->get('/company_trucks/{id}','CompanyController@showCompanyTrucks');
 Route::middleware('custom')->post('/companies/{id}/assignTruck','CompanyController@assignTruck');
 Route::middleware('custom')->post('/loads/{id}','LoadController@updateLoad');
+Route::middleware('custom')->post('/trucks/setLocation/{id}/{locationId}','TruckController@setLocation');
 Route::middleware('custom')->post('/companies/{id}/assignTruckToDriver','CompanyController@assignTruckToDriver');
 Route::middleware('custom')->post('/users/{id}/assignCompanyToUser','CompanyController@assignCompanyToUser');
 
