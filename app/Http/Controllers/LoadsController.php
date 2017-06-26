@@ -32,6 +32,16 @@ class LoadsController extends Controller
         return response()->json("success");
     }
 
+    public function finalizeLoad(Request $request, $id)
+    {
+        $load=Load::findOrFail($id);
+        $load->arrivaldate=$request->arrivaldate;
+        $load->finalsalary=$request->finalsalary;
+        $load->loadstatus=3;
+        $load->save();
+        return response()->json("success");
+    }
+
     /**
      * Store a newly created resource in storage.
      *
