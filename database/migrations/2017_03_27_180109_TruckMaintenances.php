@@ -17,9 +17,9 @@ class TruckMaintenances extends Migration
             $table->increments('id');
             $table->integer('truck_id')->unsigned();
             $table->integer('driver_id')->unsigned();
-            $table->string('actionPerformed');
-            $table->date('actionDate');
-            $table->double('actionCost');
+            $table->string('actionPerformed')->nullable();
+            $table->string('actionDate')->nullable();
+            $table->double('actionCost')->nullable();
             $table->foreign('truck_id')->references('id')->on('trucks');
             $table->foreign('driver_id')->references('id')->on('drivers');
         });

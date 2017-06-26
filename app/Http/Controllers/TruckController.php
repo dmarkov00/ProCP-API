@@ -13,6 +13,7 @@ use App\Truck;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLoad;
 use App\User;
+use App\TruckMaintenance;
 
 class TruckController extends Controller
 {
@@ -28,6 +29,21 @@ class TruckController extends Controller
     public function index(Request $request)
     {
         return Truck::where('company_id',$request->company_id)->get();
+    }
+
+    public function makeMaintenance($id, Request $request)
+    {
+
+        $maintenance = new TruckMaintenance();
+
+        $maintenance->truck_id = $id;
+        $maintenance->driver_id = $request->driver_id;
+        $maintenance->actionPerformed = $request->actionPerformed;
+        $maintenance->actionDate = $request->actionDate;
+        $maintenance->actionCost = $request->actionCost;
+       return response()->json($maintenance, 201);
+        $maintenance->save();
+        return response()->json($maintenance, 201);
     }
 
     /**
