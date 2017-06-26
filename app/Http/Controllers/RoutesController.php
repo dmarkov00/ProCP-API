@@ -110,7 +110,8 @@ class RoutesController extends Controller
      */
     public function show($id)
     {
-        //
+        $route = Route::findOrFail($id);
+        return response()->json($route);
     }
 
     /**
