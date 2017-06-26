@@ -34,9 +34,9 @@ class Loads extends Migration
             //$table->foreign('startLocation_id')->references('id')->on('locations')->onDelete('cascade');
             //$table->foreign('endLocation_id')->references('id')->on('locations')->onDelete('cascade');
             
-			//$table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            //$table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
-            //$table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
+			$table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
+            $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
             //$table->foreign('company_id')->references('id')->on('routes')->onDelete('cascade');
 
 

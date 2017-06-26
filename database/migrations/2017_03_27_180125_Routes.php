@@ -33,8 +33,8 @@ class Routes extends Migration
         $table->boolean('delivered')->default(false)->default("0");
         $table->integer('truck_id')->unsigned()->default("0");
         $table->integer('company_id')->unsigned()->default("0");
-        //$table->foreign('truck_id')->references('id')->on('trucks')->onDelete('cascade');
-        //$table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+        $table->foreign('truck_id')->references('id')->on('trucks')->onDelete('cascade');
+        $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
     });
     }
 
