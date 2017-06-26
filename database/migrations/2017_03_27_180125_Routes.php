@@ -14,7 +14,7 @@ class Routes extends Migration
     public function up()
     {
         Schema::create('routes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unique();
             $table->integer('est_time_driving')->nullable()->default("0");
         $table->integer('est_distance')->nullable()->default("0");
         $table->double('est_fuelConsumption')->nullable()->default("0");
